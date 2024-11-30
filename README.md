@@ -13,6 +13,10 @@ Simply download the raw file linked below and open it with Obsidian or edit dire
 
 https://github.com/a-sporez/OSINT---Cast-Lead/blob/main/frontend_database.md
 
+To add entries, simply add a line at the bottom with each columns separated by semi-colons like the other lines in the CSV file below. 
+
+https://github.com/a-sporez/OSINT---Cast-Lead/blob/main/input/data.csv
+
 Otherwise if you want to venture into the deep depth of bad life decisions this is how to use the sorter:
 
 _Work in progress_

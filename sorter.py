@@ -17,12 +17,13 @@ def read_csv(filepath):
         return list(reader)
 
 def generate_markdown_table(data, headers):
-    """Generates a Markdown table from a list of dictionaries."""
+    """Generates a properly formatted Markdown table."""
     table = []
     table.append("| " + " | ".join(headers) + " |")
     table.append("|" + " | ".join(["-" * len(header) for header in headers]) + "|")
     for row in data:
-        table.append("| " + " | ".join((row.get(header, "") or "") for header in headers) + " |")
+        row_data = "| " + " | ".join((row.get(header, "") or "") for header in headers) + " |"
+        table.append(row_data)
     return "\n".join(table)
 
 def generate_sorted_tables(data):

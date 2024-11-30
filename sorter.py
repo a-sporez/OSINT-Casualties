@@ -5,7 +5,7 @@ import os
 input_file = "input/data.csv"
 output_dir = "output"
 database_file = os.path.join(output_dir, "database.md")
-readme_file = os.path.join(output_dir, "README.md")
+log_file = os.path.join(output_dir, "log.md")
 
 # Ensure output directory exists
 os.makedirs(output_dir, exist_ok=True)
@@ -26,14 +26,16 @@ def generate_markdown_table(data, headers):
     return "\n".join(table)
 
 def generate_sorted_tables(data):
-    """Generates Markdown tables sorted by Name and Date."""
+    """Generates Markdown tables sorted by Name and Date, with Date as first column in the second table."""
     # Sort by name
     sorted_by_name = sorted(data, key=lambda x: x["Name"])
     name_table = generate_markdown_table(sorted_by_name, list(data[0].keys()))
 
     # Sort by date
     sorted_by_date = sorted(data, key=lambda x: x["Date of death"])
-    date_table = generate_markdown_table(sorted_by_date, list(data[0].keys()))
+    # Swap headers: "Date of death" will come first
+    headers_with_date_first = ["Date of death"] + [header for header in list(data[0].keys()) if header != "Date of death"]
+    date_table = generate_markdown_table(sorted_by_date, headers_with_date_first)
 
     return name_table, date_table
 
@@ -51,11 +53,11 @@ def write_markdown(data):
         db_file.write(date_table)
 
     # Write README.md
-    with open(readme_file, "w", encoding="utf-8") as readme:
-        readme.write("# Database Index\n\n")
-        readme.write("Welcome to the database repository. Below, you can find quick links to the sorted tables:\n\n")
-        readme.write("1. [Sorted by Name](database.md#sorted-by-name)\n")
-        readme.write("2. [Sorted by Date of Passing](database.md#sorted-by-date-of-passing)\n")
+    with open(log_file, "w", encoding="utf-8") as log:
+        log.write("# Database Index\n\n")
+        log.write("Welcome to the database repository. Below, you can find quick links to the sorted tables:\n\n")
+        log.write("1. [Sorted by Name](database.md#sorted-by-name)\n")
+        log.write("2. [Sorted by Date of Passing](database.md#sorted-by-date-of-passing)\n")
 
 # Main script execution
 if __name__ == "__main__":

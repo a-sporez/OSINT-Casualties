@@ -1,6 +1,11 @@
 import csv
 import os
-
+"""
+TODO: Handle line breaks within a single cell
+TODO: Print date in output file
+TODO: Move input and output to archives
+TODO: [Optional] Create a function to append the output and move the previous to archive
+"""
 # File paths
 input_file = "input/data.csv"
 output_dir = "output"
@@ -11,34 +16,58 @@ log_file = os.path.join(output_dir, "log.md")
 os.makedirs(output_dir, exist_ok=True)
 
 def read_csv(filepath):
-    """Reads CSV data into a list of dictionaries, with semicolons as delimiter."""
+    """Reads CSV data into a list of dictionaries, with flexible delimiter detection."""
     with open(filepath, "r", encoding="utf-8") as file:
-        reader = csv.DictReader(file, delimiter=';')
-        return list(reader)
+        try:
+            # Detect delimiter dynamically
+            sample = file.read(1024)
+            delimiter = ';' if ';' in sample else ','
+            file.seek(0)
+            reader = csv.DictReader(file, delimiter=delimiter)
+            return list(reader)
+        except Exception as e:
+            print(f"Error reading CSV file: {e}")
+            return []
 
 def generate_markdown_table(data, headers):
-    """Generates a properly formatted Markdown table."""
+    """Generates a properly formatted Markdown table with clickable URLs and sanitized text."""
+    def sanitize(value):
+        """Replaces line breaks with <br> and strips extra whitespace."""
+        if value:
+            return str(value).replace("\n", "<br>").strip()
+        return ""
+
     table = []
     table.append("| " + " | ".join(headers) + " |")
     table.append("|" + " | ".join(["-" * len(header) for header in headers]) + "|")
     for row in data:
-        row_data = "| " + " | ".join((row.get(header, "") or "") for header in headers) + " |"
-        table.append(row_data)
+        row_data = []
+        for header in headers:
+            value = sanitize(row.get(header, "") or "")
+            if header == "Profile URL" and value:
+                # Convert to Markdown clickable link
+                value = f"[Profile]({value})"
+            row_data.append(value)
+        table.append("| " + " | ".join(row_data) + " |")
     return "\n".join(table)
 
 def generate_sorted_tables(data):
     """Generates Markdown tables sorted by Name and Date, with Date as first column in the second table."""
-    # Sort by name
-    sorted_by_name = sorted(data, key=lambda x: x["Name"])
-    name_table = generate_markdown_table(sorted_by_name, list(data[0].keys()))
+    try:
+        # Sort by name
+        sorted_by_name = sorted(data, key=lambda x: x.get("Name", ""))
+        name_table = generate_markdown_table(sorted_by_name, list(data[0].keys()))
 
-    # Sort by date
-    sorted_by_date = sorted(data, key=lambda x: x["Date of death"])
-    # Swap headers: "Date of death" will come first
-    headers_with_date_first = ["Date of death"] + [header for header in list(data[0].keys()) if header != "Date of death"]
-    date_table = generate_markdown_table(sorted_by_date, headers_with_date_first)
+        # Sort by date
+        sorted_by_date = sorted(data, key=lambda x: x.get("Date of death", ""))
+        # Swap headers: "Date of death" will come first
+        headers_with_date_first = ["Date of death"] + [header for header in list(data[0].keys()) if header != "Date of death"]
+        date_table = generate_markdown_table(sorted_by_date, headers_with_date_first)
 
-    return name_table, date_table
+        return name_table, date_table
+    except Exception as e:
+        print(f"Error generating sorted tables: {e}")
+        return "", ""
 
 def write_markdown(data):
     """Writes the Markdown database and README files."""
@@ -64,8 +93,9 @@ def write_markdown(data):
 if __name__ == "__main__":
     print("Reading CSV data...")
     csv_data = read_csv(input_file)
-
-    print("Generating Markdown files...")
-    write_markdown(csv_data)
-
-    print(f"Markdown files created in '{output_dir}' directory.")
+    if not csv_data:
+        print("No data found or an error occurred during reading.")
+    else:
+        print("Generating Markdown files...")
+        write_markdown(csv_data)
+        print(f"Markdown files created in '{output_dir}' directory.")

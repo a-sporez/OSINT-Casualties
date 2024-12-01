@@ -45,9 +45,10 @@ def generate_markdown_table(data, headers):
         for header in headers:
             value = sanitize(row.get(header, "") or "")
             if header == "Profile URL" and value:
-                # Convert to Markdown clickable link
-                value = f"[Profile]({value})"
+                # Ensure URL is clickable in Markdown
+                value = f"[Link]({value})"
             row_data.append(value)
+        # Build the row, ensuring the correct number of cells
         table.append("| " + " | ".join(row_data) + " |")
     return "\n".join(table)
 

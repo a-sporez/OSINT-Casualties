@@ -13,7 +13,7 @@ Simply download the raw file linked below and open it with Obsidian or edit dire
 
 https://github.com/a-sporez/OSINT---Cast-Lead/blob/main/frontend_database.md
 
-To add entries, simply add a line at the bottom with each columns separated by semi-colons like the other lines in the CSV file below. 
+### To convert excel file into markdown, export from excel or download from google docs as CSV format, rename the file to "data.csv" and run the sorter or wait for maintainer to run the script. Copy the result and replace "frontend_database.md" with it. The archived files allow anyone to do version control without logging in to Github or needing a Github account.
 
 https://github.com/a-sporez/OSINT---Cast-Lead/blob/main/input/data.csv
 

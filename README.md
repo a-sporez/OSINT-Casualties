@@ -9,7 +9,9 @@ https://github.com/a-sporez/OSINT---Cast-Lead/blob/main/frontend_database.md
 _**Credits**_
 
 -Research: https://www.youtube.com/@lonerboxlive
+
 -Database: https://github.com/giladfrid009
+
 -Sorter/Maintainer: https://github.com/a-sporez
 
 ### CSV to Markdown parser

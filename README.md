@@ -14,6 +14,8 @@ _**Credits**_
 
 -Sorter/Maintainer: https://github.com/a-sporez
 
+**Original table**: https://docs.google.com/spreadsheets/d/1d91sJVbpa5Lx84bXgCxPaZPABA3tYjIL/
+
 ### CSV to Markdown parser
 
 This python script will convert Comma Separated Values format from Microsoft excel files and convert it to Markdown as well as produce sorted tables.

@@ -1,15 +1,23 @@
-## OSINT Content
+# OSINT Content
 
 -Detailed list of Palestinian casualties during the events surrounding the 2008-2009 Israeli Defense Force's "Operation Cast Lead"
 
-# CSV to Markdown parser
+https://github.com/a-sporez/OSINT---Cast-Lead/blob/main/frontend_database.md
+
+*This database was compiled by LonerBox Live and his community, however the maintaining and publishing of this repository is done independently*
+_**Credits**_
+Research: https://www.youtube.com/@lonerboxlive
+Database: https://github.com/giladfrid009
+Sorter/Maintainer: https://github.com/a-sporez
+
+### CSV to Markdown parser
 
 This python script will convert Comma Separated Values format from Microsoft excel files and convert it to Markdown as well as produce sorted tables.
 It makes the database less dense and friendly to IDE's like Obsidian as well as make the maintaining more straight forward.
 
 You do not need to use the python sorter or know any programming to use the database.
 
-Simply download the raw file linked below and open it with Obsidian or edit directly on Github.
+Simply download the raw file linked above and open it with Obsidian or edit directly on Github.
 
 https://github.com/a-sporez/OSINT---Cast-Lead/blob/main/frontend_database.md
 

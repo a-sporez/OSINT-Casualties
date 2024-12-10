@@ -27,7 +27,7 @@ Simply download the raw file linked above and open it with Obsidian or edit dire
 
 https://github.com/a-sporez/OSINT---Cast-Lead/blob/main/frontend_database.md
 
-### To convert excel file into markdown, export from excel or download from google docs as CSV format, rename the file to "data.csv" and put in the "input" folder. Run the sorter or wait for maintainer to run the script. Copy the resulting "database.md" in "output" and replace "frontend_database.md" with it. The archived files allow anyone to do version control without logging in to Github or needing a Github account. I will automate this later but for now it is acceptable graceful handling.
+#### To convert excel file into markdown, export from excel or download from google docs as CSV format, rename the file to "data.csv" and put in the "input" folder. Run the sorter or wait for maintainer to run the script. Copy the resulting "database.md" in "output" and replace "frontend_database.md" with it. The archived files allow anyone to do version control without logging in to Github or needing a Github account. I will automate this later but for now it is acceptable graceful handling.
 
 Otherwise if you want to venture into the deep depth of bad life decisions this is how to use the sorter:
 
@@ -48,4 +48,5 @@ _**Disclaimer: Do not execute scripts on your computer without reviewing them, i
 - review the output for mistakes, in VS Code you can see a preview and edit directly by clicking on cells and changing the text string
 - Find a cozy spot for the front end result, perhaps a folder?
 
+### Statistics aggregator
 

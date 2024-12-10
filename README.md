@@ -1,6 +1,6 @@
 # OSINT Content
 
--Detailed list of Palestinian casualties during the events surrounding the 2008-2009 Israeli Defense Force's "Operation Cast Lead"
+-Detailed comparison of Palestinian casualties reported by Btselem and Al-Qassam brigades during the events surrounding the 2008-2009 Israeli Defense Force's "Operation Cast Lead"
 
 https://github.com/a-sporez/OSINT---Cast-Lead/blob/main/frontend_database.md
 
@@ -15,6 +15,8 @@ _**Credits**_
 -Sorter/Maintainer: https://github.com/a-sporez
 
 **Original table**: https://docs.google.com/spreadsheets/d/1d91sJVbpa5Lx84bXgCxPaZPABA3tYjIL/
+
+**Bias Comparison**: https://statistics.btselem.org/en/stats/during-cast-lead/by-date-of-death?section=overall&tab=overview
 
 ### CSV to Markdown parser
 

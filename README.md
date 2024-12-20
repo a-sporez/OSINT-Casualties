@@ -4,8 +4,6 @@
 
 https://github.com/a-sporez/OSINT---Cast-Lead/blob/main/frontend_database.md
 
-*This database was compiled by LonerBox Live and his community, however the maintaining and publishing of this repository is done independently*
-
 _**Credits**_
 
 -Research: https://www.youtube.com/@lonerboxlive

@@ -3,8 +3,8 @@ from difflib import SequenceMatcher
 import os
 
 # Define input CSV file paths
-input_file_1 = "input/data1.csv"
-input_file_2 = "input/data2.csv"
+input_file_1 = "input/Alq.csv"
+input_file_2 = "input/Btselem.csv"
 output_dir = "output"
 os.makedirs(output_dir, exist_ok=True)
 
